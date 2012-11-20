@@ -10,16 +10,22 @@
 
 <script type="text/javascript">
 
+var ourList = ["Go Christmas Shopping", "Pick up dry cleaning","Make a turkey", "Buy groceries", "Punch creppy santa", "Do Ruby homework"]
+
+
 $(function () {
+	for (var i= 0; i< ourList.length; i++ ){
+		var ourItem = ourList[i];
+	
+
+		$("#container").append("<div class = 'listItem'>" + ourItem + "</div>");
+		
+	}
+
     $('.listItem').click(function () {
   		$this = $(this)
-
-  		if ($this.hasClass("completed")) {
-  			$this.removeClass("completed");
-        } else {
-        	$this.addClass("completed");
-        }
-    });
+		$this.toggleClass("completed")
+  	});
 });
 
 </script>
@@ -52,12 +58,7 @@ div.completed {
 	To-Do List
 </h1>
 
-<div class="listItem"> Go Christmas Shopping </div>
-<div class= "listItem"> Pick up dry cleaning </div>
-<div class= "listItem"> Make a turkey </div>
-<div class= "listItem"> Buy groceries </div>
-<div class= "listItem"> Punch creppy santa </div>
-<div class= "listItem"> Do Ruby homework </div>
+<div id="container"></div>
 
 
 
