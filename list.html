@@ -1,0 +1,73 @@
+<html>
+
+<head>
+<title> Our List
+</title>
+
+</head>
+
+<script src="jquery-1.8.2.min.js"></script>
+
+<script type="text/javascript">
+
+$(function () {
+    $('.listItem').click(function () {
+  		$this = $(this)
+
+  		if ($this.hasClass("completed")) {
+  			$this.removeClass("completed");
+        } else {
+        	$this.addClass("completed");
+        }
+    });
+});
+
+</script>
+
+
+<style>
+
+div {
+	border-style: solid;
+	border-width: 1px;
+	padding: 20px
+}
+
+.listItem {
+	color:red
+	} 
+h1 {
+	text-align: center
+}
+
+div.completed {
+	text-decoration: line-through;
+	color: blue;
+	font-size: 18pt;
+}
+</style>
+
+<body>
+
+
+<h1>
+	To-Do List
+</h1>
+
+<div class="listItem"> Go Christmas Shopping </div>
+<div class= "listItem"> Pick up dry cleaning </div>
+<div class= "listItem"> Make a turkey </div>
+<div class= "listItem"> Buy groceries </div>
+<div class= "listItem"> Punch creppy santa </div>
+<div class= "listItem"> Do Ruby homework </div>
+
+
+
+
+</body>
+
+
+
+
+
+</html>
