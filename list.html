@@ -1,8 +1,8 @@
 <html>
 
 <head>
-<title> Our List
-</title>
+	<title> Our List
+	</title>
 
 </head>
 
@@ -10,23 +10,49 @@
 
 <script type="text/javascript">
 
-var ourList = ["Go Christmas Shopping", "Pick up dry cleaning","Make a turkey", "Buy groceries", "Punch creppy santa", "Do Ruby homework"]
+var ourList = ["Go Christmas Shopping", "Pick up dry cleaning","Make a turkey", "Buy groceries", "Punch creepy santa", "Do Ruby homework"]
 
-
+// If you see '$', it's jquery, not plain javascript, so make sure jquery library is included
 $(function () {
+
 	for (var i= 0; i< ourList.length; i++ ){
 		var ourItem = ourList[i];
-	
-
 		$("#container").append("<div class = 'listItem'>" + ourItem + "</div>");
-		
+		// $("#container") is analogous to document.getElementById("container")
 	}
 
-    $('.listItem').click(function () {
-  		$this = $(this)
-		$this.toggleClass("completed")
-  	});
+	// $(".listItem") is analogous to document.getElementsByClass("listItems")
+	$('.listItem').click(function () {
+		$this = $(this);
+		$this.toggleClass("completed");
+	});
+
+	$("#addButton").click(function(){
+		var textValue = $("#mytextbox").val();
+		if (textValue.length==0){
+			return;
+		}
+
+		var newItem = $('<div>', { class: "listItem", text: textValue}); // newItem is a jquery object that represents a div with class=listItem and has the text in the var textValue as its text
+		
+		newItem.click(function () {
+			$this = $(this);
+			$this.toggleClass("completed");
+		});
+
+		$("#container").append(newItem); // Append can take a jquery object or DOM element as well as an HTML string like above. This acts as the same thing in line 20, jquery knows to do that
+		$('#mytextbox').val('');
+
+	});
+
+	$("#mytextbox").keyup(function(event){
+		if(event.keyCode == 13){
+			$("#addButton").click();
+		}
+	});
+
 });
+
 
 </script>
 
@@ -54,13 +80,16 @@ div.completed {
 <body>
 
 
-<h1>
-	To-Do List
-</h1>
-
-<div id="container"></div>
-
-
+	<h1>
+		To-Do List
+	</h1>
+	<div>
+		<input type="text" id="mytextbox" value="" class="listItem"/> <!-- test of css class styling -->
+		<input type="button" id="addButton" value="Add" /> 
+		<!-- onclick looks for the named function (addTask() in this case) in your javascript code and runs it if its there. These two lines are in HTML because it is just a physical box, it calls a javascript function to allow a user to enter data -->
+	</div>
+	<div id="container">
+	</div>
 
 
 </body>
